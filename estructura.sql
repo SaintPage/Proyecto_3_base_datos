@@ -66,17 +66,18 @@ CREATE TABLE Registro_Entrenamiento (
     FOREIGN KEY (id_rutina) REFERENCES Rutina(id_rutina)
 );
 
--- Tabla Rutina_Ejercicio 
+-- Crear tabla con descanso como INTERVAL
 CREATE TABLE Rutina_Ejercicio (
     id_rutina INT NOT NULL,
     id_ejercicio INT NOT NULL,
     series INT CHECK (series > 0),
     repeticiones INT CHECK (repeticiones > 0),
-    descanso INT CHECK (descanso >= 0),
+    descanso INTERVAL NOT NULL,
     PRIMARY KEY (id_rutina, id_ejercicio),
     FOREIGN KEY (id_rutina) REFERENCES Rutina(id_rutina),
     FOREIGN KEY (id_ejercicio) REFERENCES Ejercicio(id_ejercicio)
 );
+
 
 -- Tabla Usuario_Entrenador 
 CREATE TABLE Usuario_Entrenador (
